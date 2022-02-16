@@ -1,0 +1,7 @@
+spring:
+  rabbitmq:
+    host: 3.96.62.140
+    port: 5672
+    virtual-host: /
+    username: jdai
+    password: 123123
