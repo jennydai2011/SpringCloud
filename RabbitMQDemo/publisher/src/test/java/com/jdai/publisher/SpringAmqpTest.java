@@ -11,10 +11,21 @@ public class SpringAmqpTest {
     @Autowired
     RabbitTemplate rabbitTemplate;
 
+//    @Test
+//    public void testSimpleQueue(){
+//        String queueName = "simple.queue";
+//        String message = " hello, spring ampq 2!";
+//        rabbitTemplate.convertAndSend(queueName, message);
+//    }
+
     @Test
-    public void testSimpleQueue(){
+    public void testSendMessageWorkQueue() throws InterruptedException {
         String queueName = "simple.queue";
-        String message = " hello, spring ampq 2!";
-        rabbitTemplate.convertAndSend(queueName, message);
+        String message = " hello, spring ampq work queue__";
+        for (int i = 0; i < 50; i++) {
+            rabbitTemplate.convertAndSend(queueName, message + i);
+            Thread.sleep(20);
+        }
+
     }
 }
