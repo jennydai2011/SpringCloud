@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @SpringBootTest
 public class SpringAmqpTest {
     @Autowired
@@ -71,6 +74,16 @@ public class SpringAmqpTest {
 
         String message3 = " hello, spring ampq topic queue__3";
         rabbitTemplate.convertAndSend(exchangeName, "china.news",message3);
+
+    }
+
+    @Test
+    public void testSendMessageObjectQueue() throws InterruptedException {
+        Map<String, Object> msg = new HashMap();
+        msg.put("name", "zhangsan");
+        msg.put("age", 21);
+
+         rabbitTemplate.convertAndSend("object.queue", msg);
 
     }
 }
