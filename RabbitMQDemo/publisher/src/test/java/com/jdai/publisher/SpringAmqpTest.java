@@ -28,4 +28,17 @@ public class SpringAmqpTest {
         }
 
     }
+
+    @Test
+    public void testSendMessagefanQueue() throws InterruptedException {
+        //交换机名称
+        String exchangeName = "mq.fanout";
+        //消息
+        String message = " hello, spring ampq fanout queue__";
+        for (int i = 0; i < 2; i++) {
+            rabbitTemplate.convertAndSend(exchangeName, "",message + i);
+            Thread.sleep(20);
+        }
+
+    }
 }
