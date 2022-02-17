@@ -41,4 +41,36 @@ public class SpringAmqpTest {
         }
 
     }
+
+    @Test
+    public void testSendMessageDirectQueue() throws InterruptedException {
+        //交换机名称
+        String exchangeName = "mq.direct";
+        //消息
+        String message1 = " hello, spring ampq direct queue__1";
+        rabbitTemplate.convertAndSend(exchangeName, "blue",message1);
+
+        String message2 = " hello, spring ampq direct queue__2";
+        rabbitTemplate.convertAndSend(exchangeName, "red",message2);
+
+        String message3 = " hello, spring ampq direct queue__3";
+        rabbitTemplate.convertAndSend(exchangeName, "yellow",message3);
+
+    }
+
+    @Test
+    public void testSendMessageTopicQueue() throws InterruptedException {
+        //交换机名称
+        String exchangeName = "mq.topic";
+        //消息
+        String message1 = " hello, spring ampq topic queue__1";
+        rabbitTemplate.convertAndSend(exchangeName, "china.weather",message1);
+
+        String message2 = " hello, spring ampq topic queue__2";
+        rabbitTemplate.convertAndSend(exchangeName, "japan.news",message2);
+
+        String message3 = " hello, spring ampq topic queue__3";
+        rabbitTemplate.convertAndSend(exchangeName, "china.news",message3);
+
+    }
 }
