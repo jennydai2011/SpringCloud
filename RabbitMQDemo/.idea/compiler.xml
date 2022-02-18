@@ -8,6 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="publisher" />
         <module name="consumer" />
+        <module name="ticket-client" />
+      </profile>
+      <profile name="Annotation profile for server" enabled="true">
+        <sourceOutputDir name="../server/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../server/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ticket-server" />
       </profile>
     </annotationProcessing>
   </component>
@@ -16,6 +23,8 @@
       <module name="RabbitMQDemo" options="-parameters" />
       <module name="consumer" options="-parameters" />
       <module name="publisher" options="-parameters" />
+      <module name="ticket-client" options="-parameters" />
+      <module name="ticket-server" options="-parameters" />
     </option>
   </component>
 </project>
